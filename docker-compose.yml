@@ -1,0 +1,19 @@
+---
+version: '2'
+services:
+  mysql:
+    image: mysql
+    ports:
+        - "3306:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: trustn01
+  semaphore:
+    image: semaphore
+    build: semaphore/.
+    links:
+        - "mysql:mysql"
+    command: /bin/bash
+    ports:
+        - "0.0.0.0:3000:3000"
+    
+
